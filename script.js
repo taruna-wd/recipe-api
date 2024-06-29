@@ -77,7 +77,15 @@ let showIngredients = (detail) => {
     recipeName.innerText = detail.strMeal;
     cardingredients.appendChild(recipeName);
 
-    // cardingredients.appendChild(close);
+    const close = document.createElement("a")
+    close.innerHTML = `<i class="fa-solid fa-xmark" class="close"> </i>`
+    close.classList.add("close")
+    console.log(close.innerHTML)
+    cardingredients.prepend(close)
+    close.addEventListener("click" ,()=>{
+        cardingredients.style.display = "none"
+    })
+
 
 
 
@@ -94,7 +102,7 @@ let showIngredients = (detail) => {
             li.innerHTML = `<span>${measure} </span> <span>${ingredient} </span> `
 
             ingredientsList.appendChild(li)
-            
+
 
         } else {
             break;
@@ -115,14 +123,15 @@ let showIngredients = (detail) => {
 
 
     // close icon 
-    
-    const close = document.querySelector("#icon")
 
-    // close.addEventListener("click", ()=> {
-    //     cardingredients.style.display = "none"
-    //     cardingredients.innerHTML = "";
-    //     console.log("working")
-    // })
+
+ 
+//    cardingredients.prepend(close)
+//    close.addEventListener("click", ()=>{
+//         // cardingredients.style.display = "none"
+//         // cardingredients.innerHTML = "";
+//         console.log("working")
+//     })
 
 }
 
