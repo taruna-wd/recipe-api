@@ -14,10 +14,10 @@
            <h2 class="my-3">Recipe Explorer     </h2>
 
         <form action="" class="col ">
-            <input type="text" class="col-8  col-sm p-2" placeholder="Enter your favorite food "  id="input" >
+            <input type="text" class="col-8  col-sm p-2" placeholder="Enter your favorite food "  id="input"  required>
             <button id="search" class="button-62" role="button"> Search  <i class="fa-solid fa-magnifying-glass"></i></button> 
         </form>
-
+         
         <div class="container col d-flex flex-wrap justify-content-center">
         </div>
         
@@ -26,7 +26,9 @@
           <h3 class="name"> follow steps </h3>
            
         </div>
-        <button class="btn btn-outline-success" type="button" disabled>
+
+        <!-- loader for still fetching data -->
+        <button class="btn btn-outline-success" type="button" id="loader">
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           Loading...
         </button>

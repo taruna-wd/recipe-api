@@ -10,30 +10,48 @@ const image = document.querySelector("img")
 const button = document.querySelector("#receipe")
 const search = document.querySelector("#search")
 const youtubeLink = document.querySelector(".card-link")
+const loader = document.getElementById("loader")
+loader.style.display = "none"
 
 async function getRecipe(name) {
     try {
-        const result = await axios.get(receipe_Api + name)
+        loader.style.display ="block" // show 
+         const result = await axios.get(receipe_Api + name)
+         loader.style.display ="none" // show 
+
         console.log(result.data.meals)
         return result.data.meals
 
 
     } catch (err) {
         console.log(err)
+        const div = document.createElement("div")
+        const p = document.createElement("p")
+        p.innerText ="  please try again it's network issue"
+        div.append(p)
+        loader.style.display ="none" // show 
+
     }
 }
 
 // for search any receipe as you want
 search.addEventListener("click", async (e) => {
     e.preventDefault()
-    let name = document.querySelector("#input").value.trim()
-
-    const details = await getRecipe(name);
+    let name = document.querySelector("#input")
+    
+ if(name.value === ""){
+    alert("Oops!  enter any dish ")
+ }else {
+    const details = await getRecipe(name.value.trim());
+    
     console.log(details)
     show(details);
-    //   name.value.trim() = "";
+ }
+
+ name.value = ""
 
 })
+ 
 
 
 //  function for all show receipe 

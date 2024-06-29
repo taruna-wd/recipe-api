@@ -27,6 +27,9 @@
   touch-action: manipulation;
   white-space: nowrap;
 }
+.button-62:hover{
+  color: white;
+}
 
 .button-62:not([disabled]):focus {
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
@@ -100,15 +103,15 @@ a {
     left: 1em;
     transform: translateX(110%);
   }
-
+  &:hover{
+    color: #ff9a5a;
+ }
   &:hover:before {
     transform: scaleX(0.3);
-    color: #ff9a5a;
   }
 
   &:hover:after {
     transform: translateX(0);
-    color: #ff9a5a;
   }
 }
 
@@ -116,7 +119,8 @@ a {
   display: none;
   position: fixed;
   object-fit: contain;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;  
   padding: 20px;
   border-radius: 12px;
   color: #212121;
@@ -129,8 +133,29 @@ a {
 
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
+  
+}
+ .show::-webkit-scrollbar {
+  width: 10px;
 }
 
+/* Track */
+.show::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.show::-webkit-scrollbar-thumb {
+  background: #ef4765; 
+  border-radius: 10px;
+  transition: all 2ms ease-out;
+}
+
+/* Handle on hover */
+.show::-webkit-scrollbar-thumb:hover {
+  background: #521e1e; 
+}
 .list {
   list-style: none;
   padding: 5px;
@@ -150,7 +175,7 @@ a {
    
 }
 .close {
-    position: absolute;
+    position: fixed;
     right: 25px;
     top: 0;
     color: #aaa;
