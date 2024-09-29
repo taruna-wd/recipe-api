@@ -1,8 +1,6 @@
 
 const receipe_Api = `https://www.themealdb.com/api/json/v1/1/search.php?s=`
 
-
-
 const receipe_Name = document.querySelector("#name");
 const category = document.getElementById("category");
 const area = document.querySelector("#area");
@@ -11,12 +9,34 @@ const button = document.querySelector("#receipe")
 const search = document.querySelector("#search")
 const youtubeLink = document.querySelector(".card-link")
 const loader = document.getElementById("loader")
+const all = document.getElementById("all")
+const burgerBtn = document.getElementById("burgerBtn")
+const pasta = document.getElementById("pasta")
+const Salad = document.getElementById("Salad")
 loader.style.display = "none"
+
+burgerBtn.addEventListener("click" , ()=>{
+    getRecipe("burger").then(show);
+
+})
+all.addEventListener("click" , ()=>{
+    getRecipe("").then(show);
+
+})
+pasta.addEventListener("click" , ()=>{
+    getRecipe("pasta").then(show);
+
+})
+Salad.addEventListener("click" , ()=>{
+    getRecipe("Salad").then(show);
+
+})
 
 async function getRecipe(name) {
     try {
         loader.style.display ="block" // show 
-         const result = await axios.get(receipe_Api + name)
+         const result = await axios.get(receipe_Api  + name)
+          
          loader.style.display ="none" // show 
 
         console.log(result.data.meals)
@@ -34,18 +54,26 @@ async function getRecipe(name) {
     }
 }
 
+getRecipe("").then(show);
+
 // for search any receipe as you want
 search.addEventListener("click", async (e) => {
     e.preventDefault()
     let name = document.querySelector("#input")
     
- if(name.value === ""){
-    alert("Oops!  enter any dish ")
+ if(!name.value.trim()){
+    alert("Oops! please enter any dish ")
  }else {
     const details = await getRecipe(name.value.trim());
     
     console.log(details)
-    show(details);
+    // check if recipe not found
+    if(details.length){
+        show(details);
+
+    }else{
+        alert("Recipe not found , Try different recipe like burger salad ")
+    }
  }
 
  name.value = ""
@@ -56,33 +84,33 @@ search.addEventListener("click", async (e) => {
 
 //  function for all show receipe 
 async function show(details) {
-    const container = document.querySelector(".container")
+    const container = document.querySelector(".receipeshow")
 
-    container.innerHTML = ""  // for empty after single receipe search then show another dish
-    // for(let i = 0; i < details.length; i++){ 
-    for (detail of details) {
-        // const detail = details[i];
-        const cardDiv = document.createElement("div")
+    container.innerHTML = ""  // clear  previous recipe
+        details.forEach(detail => {
+            const cardDiv = document.createElement("div")
 
-        cardDiv.innerHTML = `
-        <div class="card "  style="width: 18rem;">
-          <img src="${detail.strMealThumb}" class="card-img-top" alt="..." >
-         <div class="card-body">
-           <h5 class="card-title" id="name">${detail.strMeal}</h5>
-           <p class="card-text">This delicious recipe belongs to the <span id="area"> <b>${detail.strArea}</b> </span>  and falls under the <span id="category"><b>${detail.strCategory}</b></span> category.</p>
-           <a href="${detail.strYoutube}" class="" id="recipe">youtube video</a> 
-         </div>
-        </div>`
-        const viewbtn = document.createElement("button")
-        viewbtn.innerText = "show ingredient"
-        viewbtn.classList.add("btn", "button-62", "m-2")
-        viewbtn.addEventListener("click", () => {
-            showIngredients(detail)
-        })
+            cardDiv.innerHTML = `
+            <div class="card "  style="width: 18rem;">
+              <img src="${detail.strMealThumb}" class="card-img-top" alt="..." >
+             <div class="card-body">
+               <h5 class="card-title" id="name">${detail.strMeal}</h5>
+               <p class="card-text">This delicious recipe belongs to the <span id="area"> <b>${detail.strArea}</b> </span>  and falls under the <span id="category"><b>${detail.strCategory}</b></span> category.</p>
+               <a href="${detail.strYoutube}" class="link" id="recipe">youtube video</a> 
+             </div>
+            </div>`
+            const viewbtn = document.createElement("button")
+            viewbtn.innerText = "show ingredient"
+            viewbtn.classList.add("btn", "button-62", "m-2")
+            viewbtn.addEventListener("click", () => {
+                showIngredients(detail)
+        });
         cardDiv.querySelector(".card-body").appendChild(viewbtn)
         container.appendChild(cardDiv)
+        })
 
-    }
+
+    
 
 }
 
@@ -140,16 +168,7 @@ let showIngredients = (detail) => {
 
 
 
-    // close icon 
-
-
- 
-//    cardingredients.prepend(close)
-//    close.addEventListener("click", ()=>{
-//         // cardingredients.style.display = "none"
-//         // cardingredients.innerHTML = "";
-//         console.log("working")
-//     })
+  
 
 }
 
