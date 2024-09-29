@@ -4,6 +4,64 @@
   box-sizing: border-box;
 }
 
+.logo {
+  height: 40px;
+}
+
+/* CSS */
+.showDishBtn {
+  align-items: center;
+  background-color: #ffe7e7;
+  background-position: 0 0;
+  border: 1px solid #fee0e0;
+  border-radius: 11px;
+  box-sizing: border-box;
+  color: #d33a2c;
+  cursor: pointer;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 12px;
+  line-height: 33.4929px;
+  list-style: outside url(https://www.smashingmagazine.com/images/bullet.svg)
+    none;
+  padding: 2px 12px;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: none;
+  text-underline-offset: 1px;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  word-break: break-word;
+}
+
+.showDishBtn:active,
+.showDishBtn:hover,
+showDishBtn .showDishBtn:focus {
+  outline: 0;
+}
+
+.showDishBtn:active {
+  background-color: #d33a2c;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #ffffff;
+}
+
+.showDishBtn:hover {
+  background-color: #ffe3e3;
+  border-color: #faa4a4;
+}
+
+.showDishBtn:active:hover,
+.showDishBtn:focus:hover,
+.showDishBtn:focus {
+  background-color: #d33a2c;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0 inset;
+  color: #ffffff;
+}
 /* CSS */
 .button-62 {
   background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
@@ -27,7 +85,7 @@
   touch-action: manipulation;
   white-space: nowrap;
 }
-.button-62:hover{
+.button-62:hover {
   color: white;
 }
 
@@ -72,7 +130,7 @@ input:focus-visible {
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 
-a {
+link a {
   color: rgb(15, 17, 18);
   font-size: 1.3rem;
   text-decoration: none;
@@ -103,9 +161,9 @@ a {
     left: 1em;
     transform: translateX(110%);
   }
-  &:hover{
+  &:hover {
     color: #ff9a5a;
- }
+  }
   &:hover:before {
     transform: scaleX(0.3);
   }
@@ -120,7 +178,7 @@ a {
   position: fixed;
   object-fit: contain;
   overflow-x: hidden;
-  overflow-y: scroll;  
+  overflow-y: scroll;
   padding: 20px;
   border-radius: 12px;
   color: #212121;
@@ -133,28 +191,27 @@ a {
 
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
-  
 }
- .show::-webkit-scrollbar {
+.show::-webkit-scrollbar {
   width: 10px;
 }
 
 /* Track */
 .show::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 .show::-webkit-scrollbar-thumb {
-  background: #ef4765; 
+  background: #ef4765;
   border-radius: 10px;
   transition: all 2ms ease-out;
 }
 
 /* Handle on hover */
 .show::-webkit-scrollbar-thumb:hover {
-  background: #521e1e; 
+  background: #521e1e;
 }
 .list {
   list-style: none;
@@ -167,24 +224,23 @@ a {
 
 /* Modal Content */
 
-.para{
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.8rem;
-     margin: 5px ;
-   
+.para {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  margin: 5px;
 }
 .close {
-    position: fixed;
-    right: 25px;
-    top: 0;
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
+  position: fixed;
+  right: 25px;
+  top: 0;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
 }
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
