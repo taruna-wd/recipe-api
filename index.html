@@ -33,22 +33,24 @@
           </div>
         </div>
       </nav>
-    <div style="text-align: center" >
+
+
+    <div class="container-lg text-center" >
            <h2 class="my-3">Recipe Explorer     </h2>
 
-        <form action="" class="col ">
+        <form action="" class="col-md">
             <input type="text" class="col-8  col-sm p-2" placeholder="Enter your favorite food "  id="input"  required>
-            <button id="search" class="button-62" role="button"> Search  <i class="fa-solid fa-magnifying-glass"></i></button> 
+            <button id="search" class="search-btn" role="button">   <i class="fa-solid fa-magnifying-glass"></i></button> 
         </form>
-        <div class="d-flex justify-content-start col-8 mx-auto ">
-          <button class="showDishBtn" role="button"  id="all">All</button>
-          <button class="showDishBtn" role="button" id="burgerBtn">Burger</button>
-          <button class="showDishBtn" role="button"  id="pasta">Pasta</button>
-          <button class="showDishBtn" role="button"  id="Salad">Salad</button>
+        <div class="d-flex justify-content-center flex-wrap col-md mx-auto ">
+          <button class="showDishBtn mb-2 " role="button"  id="all">All</button>
+          <button class="showDishBtn  mb-2" role="button" id="burgerBtn">Burger</button>
+          <button class="showDishBtn  mb-2" role="button"  id="pasta">Pasta</button>
+          <button class="showDishBtn  mb-2" role="button"  id="Salad">Salad</button>
 
         </div>
 
-        <div class="container receipeshow col d-flex flex-wrap justify-content-center">
+        <div class="container-sm    d-flex flex-wrap justify-content-center receipeshow">
         </div>
 
         <div id="show" class="col-md-8  col-8  m-auto show">
@@ -59,12 +61,20 @@
         </div>
 
 <!-- loader for still fetching data -->
-<button class="btn btn-outline-success  d-flex justify-content-center" type="button" id="loader">
+<button class="btn btn-outline-success mx-auto " type="button" id="loader">
+
   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
 
-       
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+    </div>
+
+  
+  </footer>
+</div> 
 
 <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
