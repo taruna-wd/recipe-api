@@ -13,7 +13,6 @@ const all = document.getElementById("all")
 const burgerBtn = document.getElementById("burgerBtn")
 const pasta = document.getElementById("pasta")
 const Salad = document.getElementById("Salad")
-loader.style.display = "none"
 
 burgerBtn.addEventListener("click" , ()=>{
     getRecipe("burger").then(show);
@@ -31,16 +30,17 @@ Salad.addEventListener("click" , ()=>{
     getRecipe("Salad").then(show);
 
 })
+loader.style.display ="none" // show 
 
 async function getRecipe(name) {
     try {
         loader.style.display ="block" // show 
          const result = await axios.get(receipe_Api  + name)
-          
-         loader.style.display ="none" // show 
-
         console.log(result.data.meals)
+        loader.style.display ="none" // show 
+
         return result.data.meals
+
 
 
     } catch (err) {
@@ -52,6 +52,7 @@ async function getRecipe(name) {
         loader.style.display ="none" // show 
 
     }
+
 }
 
 getRecipe("").then(show);
@@ -85,11 +86,9 @@ search.addEventListener("click", async (e) => {
 //  function for all show receipe 
 async function show(details) {
     const container = document.querySelector(".receipeshow")
-
     container.innerHTML = ""  // clear  previous recipe
         details.forEach(detail => {
             const cardDiv = document.createElement("div")
-
             cardDiv.innerHTML = `
             <div class="card "  style="width: 18rem;">
               <img src="${detail.strMealThumb}" class="card-img-top" alt="..." >
@@ -101,16 +100,13 @@ async function show(details) {
             </div>`
             const viewbtn = document.createElement("button")
             viewbtn.innerText = "show ingredient"
-            viewbtn.classList.add("btn", "button-62", "m-2")
+            viewbtn.classList.add("btn", "search-btn", "m-2")
             viewbtn.addEventListener("click", () => {
                 showIngredients(detail)
         });
         cardDiv.querySelector(".card-body").appendChild(viewbtn)
         container.appendChild(cardDiv)
         })
-
-
-    
 
 }
 
@@ -163,12 +159,7 @@ let showIngredients = (detail) => {
 
     instructions.innerHTML = `<b>Instructions:</b> ${oneInstruction}`;
     console.log(instructions.innerHTML)
-    cardingredients.append(instructions)
-
-
-
-
-  
+    cardingredients.append(instructions)  
 
 }
 
